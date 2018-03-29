@@ -20,6 +20,9 @@ hr {
     border: none;
     border-bottom: 1px solid #dedede;
 }
+main {
+    margin-top: -345px; 
+}
 .topNavBar {
     position: fixed;
     top: 0;
@@ -76,12 +79,13 @@ hr {
 }
 .banner .mask{
     height: 515px;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.5);
 }
 .userCard {
     max-width: 940px;
     margin: 0 auto;
     background-color: #FFFFFF;
+    box-shadow: 2px 3px 8px -2px rgba(0,0,0,0.75);
 }
 .userCard .text .welcome {
     position: relative;
@@ -153,4 +157,25 @@ hr {
     height: 30px;
     fill: white;
     vertical-align: top;
+}
+body>main .downloadResume{
+    display: inline-block;
+    padding: 21px 55px;
+    border: 1px solid #CDCFD1;
+    border-radius: 5px;
+    margin: 35px 0;
+    font-weight: bold;
+    transition: box-shadow 0.5s;
+}
+body>main .downloadResume:hover{
+    box-shadow: 2px 3px 8px -1px rgba(0,0,0,0.75);
+}
+body>main .downloadResumeWrapper{
+    text-align: center;
+}
+body>main .selfIntroduction{
+    text-align: center;
+    max-width: 940px;
+    margin: 0 auto;
+    line-height: 30px;
 }

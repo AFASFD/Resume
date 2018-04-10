@@ -1,38 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./a.css">
+    <link rel="stylesheet" href="./main.css">
     <title>杨宇文的个人简历</title>
     <script src="//at.alicdn.com/t/font_610019_76d9fbqxelt2zkt9.js"></script>
     <style type="text/css">
         .icon {
-           width: 1em; height: 1em;
-           vertical-align: -0.15em;
-           fill: currentColor;
-           overflow: hidden;
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+
+        #sitewelcome.active {
+            display: flex;
+        }
+
+        #sitewelcome {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            background: #FEFEFE;
+            z-index: 1;
+        }
+
+        .loading {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            /* background: #686868;
+            border: 1px solid #686868; */
+        }
+
+        .loading::before,
+        .loading::after {
+            content: '';
+            background: #686868;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            border-radius: 50%;
+            width: 0;
+            height: 0;
+            animation: loadingAnimation linear 1.5s infinite;
+        }
+
+        .loading::after {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes loadingAnimation {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                width: 50px;
+                height: 50px;
+                opacity: 0;
+            }
         }
     </style>
 </head>
+
 <body>
-    <header class="topNavBar">
+    <div id="sitewelcome" class="site-welcome active">
+        <div class="loading"></div>
+    </div>
+    <header id="topNavBar" class="topNavBar">
         <div class="topNavBar-inner clearfix">
             <a href="#" class="logo">
                 <span class="rs">RS</span><span class="card">card</span>
             </a>
             <nav>
                 <ul class="clearfix">
-                    <li><a>ABOUT</a></li>
-                    <li><a>SKILLS</a></li>
-                    <li><a>PORTFOLIO</a></li>
-                    <li><a>EXPERIENCE</a></li>
-                    <li><a>PRICING</a></li>
-                    <li><a>BLOG</a></li>
-                    <li><a>CALENDAR</a></li>
-                    <li><a>CONTACT</a></li>
-                    <li><a>OTHER</a></li>
+                    <li><a href="#about">关于</a></li>
+                    <li>
+                        <a href="#skills">技能</a>
+                        <ul class="submenu">
+                            <li>技能1</li>
+                            <li>技能2</li>
+                            <li>技能3</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#portfolio">作品</a>
+                        <ul class="submenu">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li><a>博客</a></li>
+                    <li><a>日历</a></li>
+                    <li><a>联系方式</a></li>
+                    <li><a>其他</a></li>
                 </ul>
             </nav>
         </div>
@@ -41,7 +117,7 @@
         <div class="mask"></div>
     </div>
     <main>
-        <div class="userCard">
+        <div data-x id="about" class="userCard">
             <div class="textAndPicture clearfix">
                 <div class="picture">
                     <img src="./img/startuper-1-299x347.jpg" width=295 height=342 alt="头像">
@@ -66,34 +142,37 @@
                 </div>
             </div>
             <footer>
-                    <a herf="#">
-                        <svg class="icon" aria-hidden="true">
-                                <use xlink:href="#icon-weixin"></use>
-                        </svg>
-                    </a>
-                    <a herf="#">
-                        <svg class="icon" aria-hidden="true">
-                                <use xlink:href="#icon-qq"></use>
-                        </svg>
-                    </a>
-                    <a herf="#">
-                        <svg class="icon" aria-hidden="true">
-                                <use xlink:href="#icon-github"></use>
-                        </svg>
-                    </a>
+                <a herf="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-weixin"></use>
+                    </svg>
+                </a>
+                <a herf="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                </a>
+                <a herf="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                </a>
             </footer>
         </div>
         <p class="downloadResumeWrapper">
             <a href="./resume.pdf" class="downloadResume" target="_blank" download>下 载 PDF 简 历</a>
         </p>
         <p class="selfIntroduction">
-            Hello! I’m Robert Smith. Senior Web Developer specializing in front end development. Experienced with all stages of the development cycle for dynamic web projects. Well-versed in numerous programming languages including JavaScript, SQL, and C. Stng background in project management and customer relations.
+            Hello! I’m Robert Smith. Senior Web Developer specializing in front end development. Experienced with all stages of the development
+            cycle for dynamic web projects. Well-versed in numerous programming languages including JavaScript, SQL, and
+            C. Stng background in project management and customer relations.
         </p>
     </main>
-    <section class="skills">
+    <section data-x id="skills" class="skills">
         <h2>技能</h2>
         <ol class="clearfix">
-            <li><h3>HTML 5 &amp; CSS3</h3>
+            <li>
+                <h3>HTML 5 &amp; CSS3</h3>
                 <div class="progressBar">
                     <div class="progress" style="width: 65%"></div>
                 </div>
@@ -130,7 +209,7 @@
             </li>
         </ol>
     </section>
-    <section class="portfolio">
+    <section data-x id="portfolio" class="portfolio">
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -138,19 +217,19 @@
                 <li id="portfolio2">框架</li>
                 <li id="portfolio3">原生JS&amp;CSS</li>
             </ol>
-            <div id="portfolioBar"class="bar state1">
+            <div id="portfolioBar" class="bar state1">
                 <div class="bar-inner"></div>
             </div>
         </nav>
         <script>
-            portfolio1.onclick=function(){
-                portfolioBar.className='bar state1';
+            portfolio1.onclick = function () {
+                portfolioBar.className = 'bar state1';
             }
-            portfolio2.onclick=function(){
-                portfolioBar.className='bar state2';
+            portfolio2.onclick = function () {
+                portfolioBar.className = 'bar state2';
             }
-            portfolio3.onclick=function(){
-                portfolioBar.className='bar state3';
+            portfolio3.onclick = function () {
+                portfolioBar.className = 'bar state3';
             }
         </script>
         <div class="works">
@@ -159,11 +238,96 @@
             </div>
             <div class="small" style="top: 0; left: 630px;">
                 <img src="./img/2.jpg" alt="作品2">
-            </div> 
+            </div>
             <div class="small" style="top: 298px; left: 630px;">
-                <img src="./img/3.jpg" alt="作品3">    
-            </div> 
+                <img src="./img/3.jpg" alt="作品3">
+            </div>
         </div>
     </section>
+    <script src="https://cdn.bootcss.com/tween.js/r14/Tween.min.js"></script>
+    <script>
+        sitewelcome.classList.remove('active')
+
+        let specialTags = document.querySelectorAll('[data-x]')
+        for (let i = 0; i < specialTags.length; i++) {
+            specialTags[i].classList.add('offset')
+        }
+        showIn()
+
+        function showIn() {
+            let specialTags = document.querySelectorAll('[data-x]')
+            let minindex = 0
+            for (let i = 0; i < specialTags.length; i++) {
+                if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minindex].offsetTop -
+                        window.scrollY)) {
+                    minindex = i
+                }
+            }
+            let id = specialTags[minindex].id
+            let a = document.querySelector('a[href="#' + id + '"]')
+            let li = a.parentNode
+            let brothersAndMe = li.parentNode.children
+            for (let i = 0; i < brothersAndMe.length; i++) {
+                brothersAndMe[i].classList.remove('highLight')
+            }
+            li.classList.add('highLight')
+            specialTags[minindex].classList.remove('offset')
+        }
+        window.onscroll = function (x) {
+            if (window.scrollY > 0) {
+                topNavBar.classList.add('stick')
+            } else {
+                topNavBar.classList.remove('stick')
+            }
+            showIn()
+        }
+        let liTags = document.querySelectorAll('.topNavBar nav>ul>li')
+        for (let i = 0; i < liTags.length; i++) {
+            liTags[i].onmouseenter = function (x) {
+                x.currentTarget.classList.add('active')
+            }
+            liTags[i].onmouseleave = function (x) {
+                x.currentTarget.classList.remove('active')
+            }
+        }
+
+        function animate(time) {
+            requestAnimationFrame(animate);
+            TWEEN.update(time);
+        }
+        requestAnimationFrame(animate);
+
+        let aTags = document.querySelectorAll('.topNavBar nav>ul>li a')
+        for (let i = 0; i < aTags.length; i++) {
+            aTags[i].onclick = function (x) {
+                x.preventDefault()
+                let a = x.currentTarget
+                let href = a.getAttribute('href')
+                let element = document.querySelector(href)
+                let top = element.offsetTop
+
+                let currentTop = window.scrollY
+                let targetTop = top - 80
+                let s = targetTop - currentTop
+                let t = Math.abs((s / 100) * 300)
+                if (t > 500) {
+                    t = 500
+                }
+                var coords = {
+                    y: currentTop
+                }
+                var tween = new TWEEN.Tween(coords)
+                    .to({
+                        y: targetTop
+                    }, t)
+                    .easing(TWEEN.Easing.Quartic.InOut)
+                    .onUpdate(function () {
+                        window.scrollTo(0, coords.y)
+                    })
+                    .start()
+            }
+        }
+    </script>
 </body>
+
 </html>

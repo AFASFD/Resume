@@ -30,13 +30,24 @@ main {
     margin-top: -345px; 
 }
 .topNavBar {
+    color: #b7b7b7;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    transition: all 1s;
+}
+.topNavBar.stick{
+    background: #FEFEFE;
+    z-index: 1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.19), 0 6px 10px rgba(0, 0, 0, 0.23);
+    color: #3d4451;
+}
+.topNavBar.stick>.topNavBar-inner{
+    padding: 8px 16px;
 }
 .topNavBar>.topNavBar-inner{
-    padding: 20px 16px 20px 16px;
+    padding: 15px 16px 15px 16px;
 }
 .topNavBar .logo {
     float: left;
@@ -63,19 +74,76 @@ main {
     float: left;
     margin-left: 17px;
     margin-right: 17px;
+    position: relative;
 }
 .topNavBar nav>ul>li>a {
     font-size: 12px;
     font-weight: bold;
-    color: #b7b7b7;
     display: block;
+    color: inherit;
     padding-top: 5px;
     padding-bottom: 5px;
-    border-top: 3px solid transparent;
-    border-bottom: 3px solid transparent;
+    position: relative;
+    cursor: pointer;
 }
-.topNavBar nav>ul>li>a:hover {
-    border-bottom: 3px solid #e06567;
+.topNavBar nav>ul>li.active a::after,.topNavBar nav>ul>li.highLight a::after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #e06567;
+    height: 3px;
+    animation: menuSlide .3s;
+}
+@keyframes menuSlide{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+    }
+}
+[data-x]{
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 0.5s;
+}
+[data-x].offset{
+    transform: translateY(50px);
+    opacity: 0.6;
+}
+.topNavBar .submenu{
+    display: none;
+    position: absolute;
+    top: calc(100% + 3px);
+    right: 0;
+    white-space: nowrap;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+    background: #FFFFFF;
+}
+.topNavBar .submenu>li{
+    padding: 10px 20px;
+    color: black;
+    cursor: pointer;
+}
+.topNavBar .submenu>li:hover{
+    color: red;
+}
+.topNavBar li.active .submenu{
+    display: block;
+    animation: subMenu .3s;
+}
+@keyframes subMenu{
+    0%{
+        margin-right: 30%;
+        opacity: 0;
+    }
+    100%{
+        margin-right: 0%;
+        opacity: 1;
+    }
 }
 .banner {
     height: 515px;
@@ -204,11 +272,17 @@ section.skills ol li:nth-child(even){
 }
 section.skills ol li .progressBar{
     height: 5px;
-    background-color: #FAE1E1; 
+    background-color: #FAE1E1;
+    overflow: hidden; 
 }
 section.skills ol li .progress{
     height: 100%;
     background-color: #E8676B;
+    transform: translateX(0);
+    transition: all 1s;
+}
+section.skills.offset ol li .progress{
+    transform: translateX(-100%); 
 }
 section.skills h3{
     margin-bottom: 5px;

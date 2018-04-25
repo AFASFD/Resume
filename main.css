@@ -411,9 +411,6 @@ section.messageBoard ol li {
     border-bottom: 1px solid black;
 }
 
-section.messageBoard>form {
-}
-
 .icon {
     width: 1em;
     height: 1em;

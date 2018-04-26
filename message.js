@@ -29,13 +29,19 @@
                 e.preventDefault()
                 let name = this.form.querySelector('input[name=name]').value
                 let content = this.form.querySelector('input[name=content]').value
-                this.model.save(name, content).then((object) => {
-                    let li = document.createElement('li')
-                    li.textContent = `${object.attributes.name}: ${object.attributes.content}`
-                    this.messageList.appendChild(li)
-                }).then(()=>{
-                    this.form.querySelector('input[name=content]').value=''
-                })
+                if (name === '') {
+                    alert('姓名未填')
+                } else if (content === '') {
+                    alert('内容未填')
+                } else {
+                    this.model.save(name, content).then((object) => {
+                        let li = document.createElement('li')
+                        li.textContent = `${object.attributes.name}: ${object.attributes.content}`
+                        this.messageList.appendChild(li)
+                    }).then(() => {
+                        this.form.querySelector('input[name=content]').value = ''
+                    })
+                }
             })
         }
     }

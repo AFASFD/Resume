@@ -17,7 +17,7 @@
         scrollToElement: function (element) {
             let top = element.offsetTop
             let currentTop = window.scrollY
-            let targetTop = top - 80
+            let targetTop = top - 120
             let s = targetTop - currentTop
             let t = Math.abs((s / 100) * 300)
             if (t > 500) {
@@ -44,7 +44,6 @@
                     let a = x.currentTarget
                     let href = a.getAttribute('href')
                     let element = document.querySelector(href)
-                    console.log(this)
                     this.scrollToElement(element)
                 }
             }

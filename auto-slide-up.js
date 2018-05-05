@@ -4,9 +4,6 @@
         view: null,
         init: function (view) {
             this.view = view
-            for (let i = 0; i < this.view.length; i++) {
-                this.view[i].classList.add('offset')
-            }
             this.showIn()
             var liTags = document.querySelectorAll('.topNavBar nav>ul>li')
             for (let i = 0; i < liTags.length; i++) {
@@ -40,7 +37,6 @@
                 brothersAndMe[i].classList.remove('highLight')
             }
             li.classList.add('highLight')
-            this.view[minindex].classList.remove('offset')
         }
     }
     controller.init.call(controller, view)
